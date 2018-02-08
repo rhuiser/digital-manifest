@@ -1,0 +1,9 @@
+---
+applications:
+  - name: digital-config
+    instances: 1
+    buildpack: java_buildpack
+    memory: 1024M
+    disk_quota: 256M
+    stack: cflinuxfs2
+    no-route: true
