@@ -1,0 +1,24 @@
+---
+applications:
+  - name: digital-gatekeeper
+    memory: 1G
+    disk_quota: 256M
+    instances: 1
+    buildpack: java_buildpack
+    services:
+        - digital-registry
+    routes:
+        - route: digital-gatekeeper.cfapps.io
+    stack: cflinuxfs2
+    env:
+          CF_SVC_NAME_DIGITAL_REGISTRY: digital-registry
+          spring.application.name: digital-gatekeeper
+
+          #Gatekeeper authentication details (for client use)
+          security.basic.enabled: false
+          security.user.name: user
+          security.user.password: password
+          
+          spring.cloud.config.name: digital-gatekeeper-dit
+          spring.cloud.config.profile: cloud
+          spring.cloud.config.label: my-config
